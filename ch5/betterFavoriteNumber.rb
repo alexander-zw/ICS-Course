@@ -3,4 +3,4 @@
 
 puts 'Hey, old sport. What\'s your favorite number?'
 favoriteNum = gets.to_i
-puts 'Well, I have a idea. Isn\'t ' + (favoriteNum + 1).to_s + ' a bigger, better favorite number?'
+puts 'Well, I have an idea. Isn\'t ' + (favoriteNum + 1).to_s + ' a bigger, better favorite number?'
