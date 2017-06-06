@@ -11,7 +11,12 @@
 # The number of days added is 4 d
 
 # The amount of hours between 5:00 AM March 11 and 6:00 PM May 23 is:
-# 24 h/d * ((32 - 11) d in March + 30 d in April + 23 d in May) + 11 h
+# 24 h/d * ((32 - 11) d in March + 30 d in April + 23 d in May) + 13 h
+
+# Hey wait! There's one more thing. Do you see it? Time zones.
+# I was born in eastern time, no DST, and now I'm in China.
+# Therefore it's 6:00 AM in EST without DST now (on the same day).
+# So the last formula should have been + 1 h
 
 # Therefore:
-puts 3600 * (24 * (365 * 17 - 4 + 32 - 11 + 30 + 23) + 11)
+puts 3600 * (24 * (365 * 17 + 4 + 32 - 11 + 30 + 23) + 1)
