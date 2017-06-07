@@ -23,10 +23,8 @@ totalLength = 'Chapter'.length + chapterNumLength + ':  '.length + chapterNameLe
 puts 'TABLE OF CONTENTS'.center(totalLength)
 puts
 
-i = 0
-while i < chapters.length
-  puts 'Chapter' + (i + 1).to_s.rjust(chapterNumLength) + ':  ' + chapters[i].ljust(chapterNameLength) + 'page' + pages[i].rjust(pageNumLength)
-  i += 1
+chapters.each_with_index do |chapterName, i|
+  puts 'Chapter' + (i + 1).to_s.rjust(chapterNumLength) + ':  ' + chapterName.ljust(chapterNameLength) + 'page' + pages[i].rjust(pageNumLength)
 end
 
 puts 'ANNOTATED BIBLIOGRAPHY'
