@@ -1,120 +1,64 @@
 # Ask for a person's first, middle, and last names one by one,
 # then greet them with their whole name
 
-puts 'Hey there. What\'s your first name?'
+# obtains a name and keeps asking for it until it is valid
+def getName allowEmpty
 
-# Check if the name consists of only letters, is capitalized, and is not empty
-invalidName = true
-while invalidName
-  wholeName = gets.chomp
+  # check if the name consists of only letters, is capitalized, and is not empty
+  while true
+    name = gets.chomp
 
-  if wholeName[/[A-Za-z]+/] != wholeName || wholeName.capitalize != wholeName
+    # if the name is valid or the user really wants to use this name
+    # or if the name is empty and we allow it
+    if (name[/[A-Za-z]+/] == name && name.capitalize == name) || (name == '' && allowEmpty) || verifyName
+      return name # use the name
+    end
+  end
 
-    puts 'Are you sure that\'s your name?'
-    while true
-      reply = gets.chomp
+end
 
-      if reply.downcase == 'yes'
-        puts 'Okay, if you\'re sure.'
-        invalidName = false
-        break # break from both loops
+# verify whether user really wants to use this name and return true if so
+def verifyName
 
-      elsif reply.downcase == 'no'
-        puts 'Then you\'d better tell me again.'
-        break # break only from inner loop
+  puts 'Are you sure that\'s your name?'
+  while true
+    reply = gets.chomp
 
-      else # don't break from either loop
-        puts 'Huh? Please type "yes" or "no":'
+    if reply.downcase == 'yes'
+      puts 'Okay, if you\'re sure.'
+      return true
 
-      end
+    elsif reply.downcase == 'no'
+      puts 'Then you\'d better tell me again.'
+      return false
+
+    else # don't break from loop
+      puts 'Huh? Please type "yes" or "no":'
 
     end
-
-  else
-    break # Name passes test
   end
+
 end
+
+# Add a space if name so far (oldName) and name to add (newName) are both not empty
+def joinNames oldName, newName
+  return oldName + ((newName != '' && oldName != '')? ' ': '') + newName
+end
+
+puts 'Hey there. What\'s your first name?'
+
+wholeName = getName(false)
 
 puts 'What about your middle name? (If you don\'t have one, just press enter.)'
 
-# Check if the name consists of only letters and is capitalized
-invalidName = true
-while invalidName
-  middleName = gets.chomp
+middleName = getName(true)
 
-  if (middleName[/[A-Za-z]+/] != middleName || middleName.capitalize != middleName) && middleName != ''
-
-    puts 'Are you sure that\'s your name?'
-    while true
-      reply = gets.chomp
-
-      if reply.downcase == 'yes'
-        puts 'Okay, if you\'re sure.'
-        invalidName = false
-        break # break from both loops
-
-      elsif reply.downcase == 'no'
-        puts 'Then you\'d better tell me again.'
-        break # break only from inner loop
-
-      else # don't break from either loop
-        puts 'Huh? Please type "yes" or "no":'
-
-      end
-
-    end
-
-  else
-    break # Name passes test
-  end
-end
-
-# Add a space if there is a middle name and a first name
-if middleName != '' && wholeName != ''
-  wholeName += ' ' + middleName
-else
-  wholeName += middleName
-end
+wholeName = joinNames(wholeName, middleName)
 
 puts 'And if you don\'t mind, your last name?'
 
-# Check if the name consists of only letters, is capitalized, and is not empty
-invalidName = true
-while invalidName
-  lastName = gets.chomp
+lastName = getName(false)
 
-  if lastName[/[A-Za-z]+/] != lastName || lastName.capitalize != lastName
-
-    puts 'Are you sure that\'s your name?'
-    while true
-      reply = gets.chomp
-
-      if reply.downcase == 'yes'
-        puts 'Okay, if you\'re sure.'
-        invalidName = false
-        break # break from both loops
-
-      elsif reply.downcase == 'no'
-        puts 'Then you\'d better tell me again.'
-        break # break only from inner loop
-
-      else # don't break from either loop
-        puts 'Huh? Please type "yes" or "no":'
-
-      end
-
-    end
-
-  else
-    break # Name passes test
-  end
-end
-
-# Add a space if there is a last name and there is a middle or first name
-if lastName != '' && wholeName != ''
-  wholeName += ' ' + lastName
-else
-  wholeName += lastName
-end
+wholeName = joinNames(wholeName, lastName)
 
 puts 'Okay, nice to meet you, ' + wholeName + '.'
