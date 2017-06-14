@@ -32,12 +32,7 @@ def romanOf strNum
         numeral += getFiveLetter(numDigits - i)
         digit -= 5
       end
-
-      if digit == 4
-        numeral += getOneLetter(numDigits - i)
-      else
-        numeral += getOneLetter(numDigits - i) * digit # add one-letter
-      end
+      numeral += getOneLetter(numDigits - i) * digit # add one-letter
     end
 
     i += 1
