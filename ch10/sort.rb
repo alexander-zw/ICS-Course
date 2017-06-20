@@ -46,9 +46,8 @@ end
 def showExampleArr
   strings = ['Mike', 'x-ray', 'ABC', '1,000,000', 'NASCAR', '你好', 'zebra',
            '"The Force is strong with this one."', 'éclairs', 'milk', '???',
-           'a merry Christmas', 'Ruby']
+           'a merry Christmas', 'Ruby', 'milky', 'NASCAR', '!']
   maxLength = '"The Force is strong with this one."'.length
-  puts 'This is a list of "words":'
   printStrings(strings, maxLength)
   puts '(Please press enter)'
   gets
