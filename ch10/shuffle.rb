@@ -2,6 +2,7 @@
 Shuffles an array of strings input by the user
 or a number array (stored as strings) of length specified by user
 and prints the outcome
+method of print is decided by user (fancy or simpler)
 Shuffle uses recursion
 Note: All characters are accepted. Strings are shuffled according to unicode.
 =end
@@ -158,7 +159,7 @@ end
 
 # --------------------------- COMPLETE PROCEDURE ---------------------------
 
-# obtain string array, whether it is predetermined or user-chosen
+# obtain string array, whether it is a number array or user-chosen strings
 if askForNumbers
   stringsAndLen = getNumbers
 else
@@ -168,9 +169,10 @@ end
 # shuffle the array
 strings = shuffle(stringsAndLen[0])
 
+# ask which method of print to use
 useBoringPrint = askForBoringPrint
 
-# print the array
+# print the array according to method
 puts 'Okay. After shuffling, the strings are:'
 if useBoringPrint
   boringPrintStrings(strings)
