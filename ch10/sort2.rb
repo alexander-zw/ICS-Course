@@ -1,6 +1,7 @@
 =begin
-Asks for input strings, sorts them with insertion sort, selection sort, or
-bubble sort depending on user's choice, and outputs them
+Asks for input strings (or uses example array if user wants to),
+sorts them with insertion sort, selection sort, or bubble sort
+depending on user's choice, and outputs them
 (All methods are iterative)
 Note: All characters are accepted. Strings are sorted according to unicode.
 =end
@@ -94,19 +95,6 @@ def printStrings strArr, maxLength
   end
 end
 
-# prints the example array of strings and returns an array
-# containing the example array and its maximum string length
-def showExampleArr
-  strings = ['Mike', 'x-ray', '1,000,000', 'NASCAR', '!', '你好', 'zebra',
-             '"The Force is strong with this one."', 'éclairs', 'milk', '???',
-             'a merry Christmas', 'Ruby', 'milky', 'ABC', 'NASCAR']
-  maxLength = '"The Force is strong with this one."'.length
-  printStrings(strings, maxLength)
-  puts '(Please press enter)'
-  gets
-  return [strings, maxLength]
-end
-
 # ask whether user wants to use predetermined list
 def askForExample
 
@@ -128,6 +116,19 @@ def askForExample
     end
   end
 
+end
+
+# prints the example array of strings and returns an array
+# containing the example array and its maximum string length
+def showExampleArr
+  strings = ['Mike', 'x-ray', '1,000,000', 'NASCAR', '!', '你好', 'zebra',
+             '"The Force is strong with this one."', 'éclairs', 'milk', '???',
+             'a merry Christmas', 'Ruby', 'milky', 'ABC', 'NASCAR']
+  maxLength = '"The Force is strong with this one."'.length
+  printStrings(strings, maxLength)
+  puts '(Please press enter)'
+  gets
+  return [strings, maxLength]
 end
 
 # asks for strings and returns an array containing the string array
@@ -165,7 +166,7 @@ def askForSort
   choices = ["Selection Sort", "Insertion Sort", "Bubble Sort"]
   puts 'How would you like the strings to be sorted?'
   puts "1: #{choices[0]}\n2: #{choices[1]}\n3: #{choices[2]}"
-  
+
   while true
     reply = gets.chomp.to_i
     case reply
@@ -183,23 +184,23 @@ end
 
 # obtain string array, whether it is predetermined or user-chosen
 if askForExample
-  stringsAndMaxLen = showExampleArr
+  stringsAndLen = showExampleArr
 else
-  stringsAndMaxLen = getStrings
+  stringsAndLen = getStrings
 end
 
 # sort the array using chosen method
 case askForSort
 when 1
-  strings = selectionSort(stringsAndMaxLen[0])
+  strings = selectionSort(stringsAndLen[0])
 when 2
-  strings = insertionSort(stringsAndMaxLen[0])
+  strings = insertionSort(stringsAndLen[0])
 when 3
-  strings = bubbleSort(stringsAndMaxLen[0])
+  strings = bubbleSort(stringsAndLen[0])
 else
   puts 'Error: askForSort out of range'
 end
 
 # print the array
 puts 'After sorting, the strings are:'
-printStrings(strings, stringsAndMaxLen[1])
+printStrings(strings, stringsAndLen[1])

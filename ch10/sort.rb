@@ -1,4 +1,5 @@
-# Asks for input strings, sorts them with recursion, and outputs them
+# Asks for input strings (or uses example array if user wants to),
+# sorts them with recursion, and outputs them
 # Note: All characters are accepted. Strings are sorted according to unicode.
 
 # --------------------------- METHOD OF SORTING ---------------------------
@@ -41,19 +42,6 @@ def printStrings strArr, maxLength
   end
 end
 
-# prints the example array of strings and returns an array
-# containing the example array and its maximum string length
-def showExampleArr
-  strings = ['Mike', 'x-ray', 'ABC', '1,000,000', 'NASCAR', '你好', 'zebra',
-           '"The Force is strong with this one."', 'éclairs', 'milk', '???',
-           'a merry Christmas', 'Ruby', 'milky', 'NASCAR', '!']
-  maxLength = '"The Force is strong with this one."'.length
-  printStrings(strings, maxLength)
-  puts '(Please press enter)'
-  gets
-  return [strings, maxLength]
-end
-
 # ask whether user wants to use predetermined list
 def askForExample
 
@@ -75,6 +63,19 @@ def askForExample
     end
   end
 
+end
+
+# prints the example array of strings and returns an array
+# containing the example array and its maximum string length
+def showExampleArr
+  strings = ['Mike', 'x-ray', '1,000,000', 'NASCAR', '!', '你好', 'zebra',
+             '"The Force is strong with this one."', 'éclairs', 'milk', '???',
+             'a merry Christmas', 'Ruby', 'milky', 'ABC', 'NASCAR']
+  maxLength = '"The Force is strong with this one."'.length
+  printStrings(strings, maxLength)
+  puts '(Please press enter)'
+  gets
+  return [strings, maxLength]
 end
 
 # asks for strings and returns an array containing the string array
@@ -110,14 +111,14 @@ end
 
 # obtain string array, whether it is predetermined or user-chosen
 if askForExample
-  stringsAndMaxLen = showExampleArr
+  stringsAndLen = showExampleArr
 else
-  stringsAndMaxLen = getStrings
+  stringsAndLen = getStrings
 end
 
 # sort the array
-strings = sort(stringsAndMaxLen[0])
+strings = sort(stringsAndLen[0])
 
 # print the array
 puts 'After sorting, the strings are:'
-printStrings(strings, stringsAndMaxLen[1])
+printStrings(strings, stringsAndLen[1])
