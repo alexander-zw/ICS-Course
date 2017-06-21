@@ -25,11 +25,10 @@ def recursiveSort unsorted, sorted
     end
   end
   # put min word from unsorted to sorted
-  sorted.push(unsorted[minI])
-  unsorted.delete_at(minI)
+  sorted.push(unsorted.delete_at(minI))
+  
   # sort the rest
   return recursiveSort(unsorted, sorted)
-
 end
 
 # --------------------------- USER INTERFACE ---------------------------
