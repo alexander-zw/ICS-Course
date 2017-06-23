@@ -183,7 +183,7 @@ def getYear
       if year.abs.to_s.length <= 333
         if year <= 0 || year > 1000000 # wierd year
           puts 'Well, it\'s none of my business if no one can understand ' +
-               'what year you\'re refering to'
+               'what year you\'re referring to'
         end
         return year
       else # number too big
