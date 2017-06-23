@@ -163,7 +163,7 @@ def getNum
   while true
     strNum = gets.chomp
 
-    # check if the input was valid (an positive or negative int)
+    # check if the input was valid (an positive or negative int or 0)
     if strNum[/[0-9]+/] == strNum ||
        (strNum[0] == '-' && strNum[1..-1][/[0-9]+/] == strNum[1..-1])
       num = strNum.to_i
