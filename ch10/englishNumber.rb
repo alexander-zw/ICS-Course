@@ -147,8 +147,6 @@ def thousandsWordOf numZeros
 			# the second part needs to be converted back to numZeros instead of
 			# numThousands
       # the "- 1" is because latinRoots[5] is 'sex', not 'quin'
-      puts numThousands
-
 			return latinRoots[numThousands % 10 - 1] +
              thousandsWordOf(numThousands / 10 * 30 + 3);
       # note: if numThousands >= 110 (numZeros > 333) this will be stuck in
@@ -171,7 +169,7 @@ def getNum
       num = strNum.to_i
       # only if there are 333 digits or fewer
       if num.abs.to_s.length <= 333
-          return num
+        return num
       else # number too big
         puts 'That\'s... a little too big. Can\'t you try something smaller?'
       end
