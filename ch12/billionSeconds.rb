@@ -146,5 +146,5 @@ birthday = getBirthday
 secondsOld = (Time.new - birthday).round
 puts "You are #{(secondsOld < 0)? 'not born yet' : "#{secondsOld} seconds old"}. " +
      "You #{(secondsOld < 10**9)? 'will be' : 'were'} a billion seconds old at:"
-puts (birthday + 10**9).to_s[0..-5]
+puts (birthday + 10**9).ctime
 puts 'Assuming you\'re in the same time zone'
