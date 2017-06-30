@@ -1,5 +1,6 @@
 # Builds a playlist in a .m3u file from music in the directory
 # '/Users/AlexanderWu/Music/iTunes/iTunes Media/Music/Owl City'
+# Shuffles playlist if user requests it. Name of playlist entered by user
 
 # wrapper method that shuffles arr
 def shuffle arr
@@ -34,10 +35,30 @@ def savePlaylist musicArr, filename
   end
 end
 
+# returns whether user wants to shuffle
+def verifyShuffle
+  while true
+    reply = gets.chomp.downcase
+
+    if reply == 'yes'
+      puts 'Okay, shuffling...'
+      return true
+    end
+    if reply == 'no'
+      print 'Right. '
+      return false
+    end
+    puts 'Huh? Please type "yes" or "no":'
+
+  end
+end
+
 Dir.chdir('/Users/AlexanderWu/Documents/Otros/Music')
 musicNames = Dir['/Users/AlexanderWu/Music/iTunes/iTunes Media/Music/' +
                'Owl City/**/*.m4a']
-# musicNames = shuffle(musicNames)
+
+puts 'Would you like to shuffle this playlist?'
+musicNames = shuffle(musicNames) if verifyShuffle
 
 puts 'What would you like to call this playlist?'
 playlistName = gets.chomp
