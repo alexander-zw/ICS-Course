@@ -1,5 +1,6 @@
 # Contains a method that calls a block once for each hour that has passed
 # since 12:00
+# The rest of the program tests the method
 
 # calls a block n times, where n is the time in hours
 # e.g. if it's 7:45, calls 7 times, if it's 12:30, calls 12 times
