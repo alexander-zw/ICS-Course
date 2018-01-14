@@ -149,7 +149,7 @@ def thousandsWordOf numZeros
       # the "- 1" is because latinRoots[5] is 'sex', not 'quin'
 			return latinRoots[numThousands % 10 - 1] +
              thousandsWordOf(numThousands / 10 * 30 + 3);
-      # note: if numThousands >= 110 (numZeros > 333) this will be stuck in
+      # NOTE: if numThousands >= 110 (numZeros > 333) this will be stuck in
       # infinite recursion
 		end
 

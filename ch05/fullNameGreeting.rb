@@ -61,4 +61,8 @@ lastName = getName(false)
 
 wholeName = joinNames(wholeName, lastName)
 
+if wholeName == ""
+  wholeName = "Guy With No Name"
+end
+
 puts 'Okay, nice to meet you, ' + wholeName + '.'
